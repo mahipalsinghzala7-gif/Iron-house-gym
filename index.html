@@ -1,0 +1,265 @@
+   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IRON HOUSE GYM | Build Your Legacy</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#090909;color:#fff;font-family:Poppins,sans-serif}
+:root{--red:#e50914;--dark:#090909;--gray:#aaa}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer}
+header{height:78px;padding:0 8%;display:flex;align-items:center;justify-content:space-between;background:#090909;position:fixed;top:0;width:100%;z-index:100;border-bottom:1px solid #222}
+.logo{font:700 27px Oswald;color:white;letter-spacing:2px}
+.logo span{color:var(--red)}
+nav{display:flex;gap:28px}
+nav a{font-size:13px;color:#ddd;transition:.3s}
+nav a:hover{color:var(--red)}
+.menu{display:none;background:none;border:0;color:white;font-size:27px}
+.btn{display:inline-block;background:var(--red);padding:13px 25px;font-weight:600;font-size:12px;letter-spacing:1px;border:1px solid var(--red);transition:.3s}
+.btn:hover{background:transparent;color:var(--red);transform:translateY(-3px)}
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 9% 70px;background:linear-gradient(90deg,#080808 5%,rgba(0,0,0,.8) 48%,rgba(0,0,0,.2)),url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=2000&q=90') center/cover}
+.hero-content{max-width:650px;animation:slide .9s ease}
+.tag{color:var(--red);font-weight:600;letter-spacing:4px;font-size:12px}
+.hero h1{font:700 clamp(48px,8vw,92px)/1.05 Oswald;margin:22px 0;text-transform:uppercase}
+.hero h1 span{color:var(--red)}
+.hero p{color:#ccc;max-width:490px;line-height:1.9;margin-bottom:30px;font-size:14px}
+.section{padding:100px 9%}
+.section-head{text-align:center;margin-bottom:55px}
+.section-head small{color:var(--red);letter-spacing:4px;font-weight:600}
+.section-head h2{font:700 clamp(34px,5vw,52px) Oswald;margin-top:12px;text-transform:uppercase}
+.section-head p{color:var(--gray);font-size:13px;margin-top:12px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-img{height:480px;background:url('https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1000&q=85') center/cover;position:relative}
+.about-img:after{content:"";position:absolute;inset:15px;border:1px solid var(--red)}
+.about-text h2{font:700 48px Oswald;margin:15px 0}
+.about-text h2 span{color:var(--red)}
+.about-text p{color:#aaa;font-size:14px;line-height:2;margin-bottom:22px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:30px}
+.stat{border-left:2px solid var(--red);padding-left:13px}
+.stat h3{font:700 30px Oswald}
+.stat p{font-size:11px;margin:0}
+.programs{background:#101010}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:#171717;border:1px solid #292929;transition:.35s;overflow:hidden}
+.card:hover{transform:translateY(-9px);border-color:var(--red)}
+.card img{width:100%;height:220px;object-fit:cover;display:block}
+.card-body{padding:25px}
+.card h3{font:600 25px Oswald;margin-bottom:12px}
+.card p{font-size:12px;line-height:1.8;color:#aaa}
+.card a{display:inline-block;color:var(--red);font-size:12px;margin-top:18px;font-weight:600}
+.trainers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.trainer{position:relative;overflow:hidden;height:390px;background:#171717}
+.trainer img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.trainer:hover img{transform:scale(1.08)}
+.trainer-info{position:absolute;bottom:0;left:0;width:100%;padding:45px 20px 20px;background:linear-gradient(transparent,#000)}
+.trainer-info h3{font:600 25px Oswald}
+.trainer-info p{font-size:12px;color:var(--red)}
+.pricing{background:#101010}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.plan{background:#171717;border:1px solid #333;text-align:center;padding:38px 20px;transition:.3s}
+.plan.featured{border:1px solid var(--red);transform:scale(1.03)}
+.plan h3{font:600 26px Oswald}
+.price{font:700 48px Oswald;color:var(--red);margin:20px 0}
+.price span{font:400 13px Poppins;color:#aaa}
+.plan p{font-size:13px;color:#bbb;line-height:2.7}
+.plan .btn{margin-top:25px}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.gallery img{width:100%;height:210px;object-fit:cover;transition:.3s}
+.gallery img:hover{transform:scale(1.03);filter:brightness(.7)}
+.cta{padding:90px 9%;text-align:center;background:linear-gradient(#000b,#000b),url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=85') center/cover}
+.cta h2{font:700 clamp(38px,6vw,65px) Oswald;margin-bottom:20px}
+.cta p{color:#ccc;margin-bottom:28px}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+.contact h2{font:700 42px Oswald;margin-bottom:20px}
+.contact p{color:#aaa;font-size:13px;line-height:2;margin:10px 0}
+form{display:grid;gap:14px}
+input,textarea{width:100%;padding:15px;background:#171717;border:1px solid #333;color:white;font:13px Poppins;outline:none}
+input:focus,textarea:focus{border-color:var(--red)}
+textarea{height:120px;resize:vertical}
+footer{background:#050505;padding:35px 9%;text-align:center;border-top:1px solid #222}
+footer .logo{margin-bottom:12px}
+footer p{font-size:11px;color:#777}
+.whatsapp{position:fixed;bottom:22px;right:22px;background:#20c565;color:#fff;border-radius:50px;padding:14px 19px;font-size:13px;font-weight:600;z-index:90;box-shadow:0 5px 25px #0008}
+.reveal{opacity:0;transform:translateY(35px);transition:all .8s ease}
+.reveal.show{opacity:1;transform:translateY(0)}
+@keyframes slide{from{opacity:0;transform:translateX(-35px)}to{opacity:1;transform:translateX(0)}}
+@media(max-width:850px){
+nav{display:none;position:absolute;top:78px;left:0;width:100%;background:#111;padding:25px;flex-direction:column;gap:20px}
+nav.active{display:flex}
+.menu{display:block}
+.header-btn{display:none}
+.about,.contact{grid-template-columns:1fr}
+.cards,.trainers,.plans{grid-template-columns:1fr 1fr}
+.about-img{height:350px}
+}
+@media(max-width:560px){
+header{padding:0 5%}
+.section{padding:75px 6%}
+.hero{padding-left:7%;background-position:60% center}
+.cards,.trainers,.plans{grid-template-columns:1fr}
+.plan.featured{transform:none}
+.gallery{grid-template-columns:1fr 1fr}
+.gallery img{height:145px}
+.stats h3{font-size:24px}
+}
+</style>
+</head>
+
+<body>
+<header>
+<a href="#" class="logo">IRON<span>HOUSE</span></a>
+<nav id="nav">
+<a href="#home">HOME</a>
+<a href="#about">ABOUT</a>
+<a href="#programs">PROGRAMS</a>
+<a href="#trainers">TRAINERS</a>
+<a href="#membership">MEMBERSHIP</a>
+<a href="#contact">CONTACT</a>
+</nav>
+<a href="#membership" class="btn header-btn">JOIN NOW</a>
+<button class="menu" onclick="document.getElementById('nav').classList.toggle('active')">☰</button>
+</header>
+
+<section class="hero" id="home">
+<div class="hero-content">
+<div class="tag">WELCOME TO IRON HOUSE</div>
+<h1>BUILD YOUR<br><span>LEGACY.</span></h1>
+<p>Push your limits. Build your strength. Transform your body with expert trainers, modern equipment and a community that motivates you.</p>
+<a href="#membership" class="btn">START YOUR JOURNEY →</a>
+</div>
+</section>
+
+<section class="section" id="about">
+<div class="about reveal">
+<div class="about-img"></div>
+<div class="about-text">
+<div class="tag">WHO WE ARE</div>
+<h2>STRONGER EVERY <span>DAY.</span></h2>
+<p>Welcome to Iron House Gym, where dedication meets transformation. Our fitness space is designed to help you become stronger, healthier and more confident.</p>
+<p>Whether you're a beginner or an experienced athlete, our team is here to support your fitness journey.</p>
+<div class="stats">
+<div class="stat"><h3>10+</h3><p>EXPERT TRAINERS</p></div>
+<div class="stat"><h3>500+</h3><p>HAPPY MEMBERS</p></div>
+<div class="stat"><h3>24/7</h3><p>FITNESS MINDSET</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section programs" id="programs">
+<div class="section-head reveal">
+<small>WHAT WE OFFER</small>
+<h2>OUR PROGRAMS</h2>
+<p>Training designed for your goals.</p>
+</div>
+<div class="cards">
+<div class="card reveal">
+<img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=800&q=85" alt="Strength training">
+<div class="card-body"><h3>STRENGTH TRAINING</h3><p>Build muscle, improve strength and develop a powerful body with focused workouts.</p><a href="#contact">ENQUIRE NOW →</a></div>
+</div>
+<div class="card reveal">
+<img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=85" alt="Personal training">
+<div class="card-body"><h3>PERSONAL TRAINING</h3><p>Get individual guidance and a workout plan designed around your fitness goals.</p><a href="#contact">ENQUIRE NOW →</a></div>
+</div>
+<div class="card reveal">
+<img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=85" alt="Fitness training">
+<div class="card-body"><h3>FITNESS & CARDIO</h3><p>Improve stamina, boost energy and make fitness a part of your everyday life.</p><a href="#contact">ENQUIRE NOW →</a></div>
+</div>
+</div>
+</section>
+
+<section class="section" id="trainers">
+<div class="section-head reveal">
+<small>MEET THE TEAM</small><h2>EXPERT TRAINERS</h2>
+<p>Guidance that helps you achieve more.</p>
+</div>
+<div class="trainers">
+<div class="trainer reveal"><img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=800&q=85" alt="Trainer"><div class="trainer-info"><h3>HEAD COACH</h3><p>STRENGTH SPECIALIST</p></div></div>
+<div class="trainer reveal"><img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=800&q=85" alt="Trainer"><div class="trainer-info"><h3>FITNESS COACH</h3><p>PERSONAL TRAINER</p></div></div>
+<div class="trainer reveal"><img src="https://images.unsplash.com/photo-1534367610401-9f5ed68180aa?auto=format&fit=crop&w=800&q=85" alt="Trainer"><div class="trainer-info"><h3>GYM COACH</h3><p>FITNESS EXPERT</p></div></div>
+</div>
+</section>
+
+<section class="section pricing" id="membership">
+<div class="section-head reveal">
+<small>CHOOSE YOUR PLAN</small><h2>MEMBERSHIP PLANS</h2>
+<p>Start building a stronger version of yourself.</p>
+</div>
+<div class="plans">
+<div class="plan reveal"><h3>MONTHLY</h3><div class="price">₹999<span> / month</span></div><p>Gym Access<br>Basic Equipment<br>Locker Facility</p><a href="#contact" class="btn">JOIN NOW</a></div>
+<div class="plan featured reveal"><h3>QUARTERLY</h3><div class="price">₹2499<span> / 3 months</span></div><p>Full Gym Access<br>Workout Guidance<br>Locker Facility</p><a href="#contact" class="btn">JOIN NOW</a></div>
+<div class="plan reveal"><h3>YEARLY</h3><div class="price">₹7999<span> / year</span></div><p>Full Gym Access<br>Personal Guidance<br>Special Member Benefits</p><a href="#contact" class="btn">JOIN NOW</a></div>
+</div>
+</section>
+
+<section class="section">
+<div class="section-head reveal"><small>INSIDE IRON HOUSE</small><h2>OUR GALLERY</h2></div>
+<div class="gallery reveal">
+<img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=500&q=85" alt="Gym">
+<img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=500&q=85" alt="Workout">
+<img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=500&q=85" alt="Training">
+<img src="https://images.unsplash.com/photo-1579758629938-03607ccdbaba?auto=format&fit=crop&w=500&q=85" alt="Fitness">
+</div>
+</section>
+
+<section class="cta">
+<div class="tag">YOUR TIME IS NOW</div>
+<h2>READY TO GET STRONGER?</h2>
+<p>Take the first step towards your transformation today.</p>
+<a href="#contact" class="btn">BECOME A MEMBER →</a>
+</section>
+
+<section class="section" id="contact">
+<div class="contact reveal">
+<div>
+<div class="tag">GET IN TOUCH</div>
+<h2>LET'S START<br>YOUR JOURNEY.</h2>
+<p>📍 Your Gym Address, Your City</p>
+<p>📞 +91 99999 99999</p>
+<p>✉️ ironhousegym@example.com</p>
+<p>🕒 Monday - Sunday | 6 AM - 10 PM</p>
+</div>
+<form onsubmit="sendMessage(event)">
+<input id="name" placeholder="Your Name" required>
+<input id="phone" placeholder="Your Phone Number" required>
+<textarea id="message" placeholder="Tell us about your fitness goals"></textarea>
+<button class="btn" type="submit">SEND ENQUIRY →</button>
+</form>
+</div>
+</section>
+
+<footer>
+<div class="logo">IRON<span>HOUSE</span></div>
+<p>BUILT WITH STRENGTH. DRIVEN BY DISCIPLINE.</p>
+<p style="margin-top:15px">© 2026 IRON HOUSE GYM. ALL RIGHTS RESERVED.</p>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/919999999999" target="_blank">WhatsApp Us ↗</a>
+
+<script>
+function sendMessage(e){
+e.preventDefault();
+let name=document.getElementById('name').value;
+let phone=document.getElementById('phone').value;
+let msg=document.getElementById('message').value;
+let text="Hello Iron House Gym!%0AName: "+encodeURIComponent(name)+"%0APhone: "+encodeURIComponent(phone)+"%0AMessage: "+encodeURIComponent(msg);
+window.open("https://wa.me/919999999999?text="+text,"_blank");
+}
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){entry.target.classList.add('show');}
+});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+document.querySelectorAll('nav a').forEach(a=>{
+a.addEventListener('click',()=>document.getElementById('nav').classList.remove('active'));
+});
+</script>
+</body>
+</html>
